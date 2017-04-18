@@ -31,25 +31,25 @@ exports.seed = function(knex, Promise) {
           channel: 'AMC',
           genre: 'dramedy',
           inProduction: true
-        }), 
+        }),
         knex('shows').insert({
           name: 'Cheers',
           channel: 'NBC',
           genre: 'comedy',
           inProduction: false
-        }), 
+        }),
         knex('shows').insert({
           name: 'Bob\'s Burgers',
           channel: 'Fox',
           genre: 'animation',
           inProduction: true
-        }), 
+        }),
         knex('shows').insert({
           name: 'Stranger Things',
           channel: 'Netflix',
           genre: 'drama',
           inProduction: true
-        }) 
+        })
       ]);
     });
 };

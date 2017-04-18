@@ -7,8 +7,8 @@
     "start": "nodemon bin/tv_faves",
     "test": "nodemon --exec \"mocha --recursive\" -R list"
   },
-  "engines": { 
-    "node": "7.3.0"
+  "engines": {
+    "node": "7.4.0"
   },
   "dependencies": {
     "body-parser": "~1.16.0",

@@ -34,3 +34,25 @@ module.exports.getShowFaves = ({query: {showId}}, res, next) => {
     next(err);
   });
 };
+
+
+module.exports.addShow = ({body}, res, next) => {
+  Show.forge(body)
+  .save()
+  .then(() => res.status(201).json({"msg": "Nice Post"}))
+  .catch((error) => {
+    next(error)
+  })
+}
+
+module.exports.deleteShow = ({params: {id}}, res, next) => {
+  Show.forge({id})
+  .destroy()
+  .then( (show)=> {
+    res.status(202).json(show)
+
+  })
+  .catch((err) => {
+    next(err)
+  })
+}

@@ -1,9 +1,10 @@
 const { Router } = require('express');
 const router = Router();
 
-const { getAllDirectors, getShowsByDirector } = require('../controllers/directorCtrl.js');
+const { getAllDirectors, getShowsByDirector, getSingleDirector } = require('../controllers/directorCtrl.js');
 
 router.get('/directors', getAllDirectors);
-router.get('/directors/:id', getShowsByDirector);
+router.get('/directors/shows', getShowsByDirector);
+router.get('/directors/:id', getSingleDirector)
 
 module.exports = router;

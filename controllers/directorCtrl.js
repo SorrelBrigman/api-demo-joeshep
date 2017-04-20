@@ -16,12 +16,24 @@ module.exports.getAllDirectors = (req, res, next) => {
   })
 }
 
+module.exports.getSingleDirector = ({params: {id}}, res, next) => {
+  Director.getDirector(id)
+  .then((dir)=> {
+    res.status(200).json(dir)
+  })
+  .catch((err) => {
+    next(err);
+  })
+}
+
+
 module.exports.getShowsByDirector = ({query: {directorId}}, res, next) => {
   console.log('get all shows for a director');
-  Director.forge({id: directorId})
-  .fetch({withrelated: ['shows'], require: true})
-  .then((shows)=> {
-    res.status(200).json(shows)
+  Director.where({id: directorId})
+  .fetch({withRelated: ['shows'], require: true})
+  .then((rw)=> {
+    console.log("rw", rw);
+    res.status(200).json(rw)
   })
   .catch((err) => {
     next(err);

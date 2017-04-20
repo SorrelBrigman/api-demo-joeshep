@@ -47,7 +47,9 @@ module.exports.getShowDirectors = ({query: {showId}}, res, next) => {
   });
 };
 
-
+module.exports.getAllDirections = (req, res, next) => {
+  console.log('get all the directors');
+}
 
 
 module.exports.addShow = ({body}, res, next) => {

@@ -15,3 +15,15 @@ module.exports.getAllDirectors = (req, res, next) => {
     next(err);
   })
 }
+
+module.exports.getShowsByDirector = ({query: {directorId}}, res, next) => {
+  console.log('get all shows for a director');
+  Director.forge({id: directorId})
+  .fetch({withrelated: ['shows'], require: true})
+  .then((shows)=> {
+    res.status(200).json(shows)
+  })
+  .catch((err) => {
+    next(err);
+  })
+}

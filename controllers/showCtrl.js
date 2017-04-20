@@ -35,6 +35,20 @@ module.exports.getShowFaves = ({query: {showId}}, res, next) => {
   });
 };
 
+module.exports.getShowDirectors = ({query: {showId}}, res, next) => {
+  console.log("The query string", showId);
+  Show.forge({id: showId})
+  .fetch({withRelated: ['directors'], require: true})
+  .then( (showdrix) => {
+    res.status(200).json(showdrix)
+  })
+  .catch( (err) => {
+    next(err);
+  });
+};
+
+
+
 
 module.exports.addShow = ({body}, res, next) => {
   Show.forge(body)
